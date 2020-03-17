@@ -7,6 +7,7 @@ const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 const RobotstxtPlugin = require("robotstxt-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 
 const options = {}; // see options below
 
@@ -33,6 +34,21 @@ module.exports = merge(common, {
   plugins: [
     new MiniCssExtractPlugin({ filename: "[name].[contentHash].css" }),
     new CleanWebpackPlugin(),
+    new CompressionPlugin({
+      filename: "[path].gz[query]",
+      algorithm: "gzip",
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8
+    }),
+    // new CompressionPlugin({
+    //   filename: "[path].br[query]",
+    //   algorithm: "brotliCompress",
+    //   test: /\.(js|css|html|svg)$/,
+    //   compressionOptions: { level: 11 },
+    //   threshold: 10240,
+    //   minRatio: 0.8
+    // }),
     new RobotstxtPlugin(options)
   ],
   module: {
