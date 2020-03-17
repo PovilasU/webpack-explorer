@@ -8,6 +8,8 @@ const TerserPlugin = require("terser-webpack-plugin");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 const RobotstxtPlugin = require("robotstxt-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 
 const options = {}; // see options below
 
@@ -41,6 +43,8 @@ module.exports = merge(common, {
       threshold: 10240,
       minRatio: 0.8
     }),
+    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin()
     // new CompressionPlugin({
     //   filename: "[path].br[query]",
     //   algorithm: "brotliCompress",
