@@ -1,13 +1,15 @@
+/* eslint-disable no-console */
 const express = require('express');
 const bodyParser = require('body-parser');
-const { join } = require('path');
+// const { join } = require('path');
+
 const app = express();
 const port = 8000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use((req, res, next) => {
   // Logger
-  let time = new Date();
+  const time = new Date();
   console.log(
     `${req.method} to ${
       req.originalUrl
