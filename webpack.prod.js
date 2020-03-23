@@ -42,7 +42,7 @@ module.exports = merge(common, {
       test: /\.js$|\.css$|\.html$/,
       threshold: 10240,
       minRatio: 0.8
-    }),
+    })
     // new BundleAnalyzerPlugin(),
     // new BundleAnalyzerPlugin()
     // new CompressionPlugin({
@@ -53,7 +53,7 @@ module.exports = merge(common, {
     //   threshold: 10240,
     //   minRatio: 0.8
     // }),
-    new RobotstxtPlugin(options)
+    // new RobotstxtPlugin(options)
   ],
   module: {
     rules: [
